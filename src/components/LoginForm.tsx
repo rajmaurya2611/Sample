@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../services/authService";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const token = await login(email, password);
+      const token = await login(Email, Password);
       localStorage.setItem("token", token); // Save token
       navigate("/dashboard");
     } catch (err: any) {
@@ -29,8 +29,8 @@ const LoginForm = () => {
             Email
           </label>
           <input
-            id="email"
-            value={email}
+            id="Email"
+            value={Email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border p-2 rounded"
           />
@@ -40,9 +40,9 @@ const LoginForm = () => {
             Password
           </label>
           <input
-            type="password"
-            id="password"
-            value={password}
+            type="Password"
+            id="Password"
+            value={Password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border p-2 rounded"
           />
